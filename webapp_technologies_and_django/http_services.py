@@ -14,6 +14,8 @@ def simple_get_request(parms,url):
     resp = u.read()
     return resp
 
-print(simple_get_request(
-    parms,url_get
-))
+def simple_post_request(parms,url):
+    querystring = parse.urlencode(parms) #'name1=value1&name2=value2'
+    u = request.urlopen(url+'?' + querystring.encode('ascii'))
+    resp = u.read()
+    return resp
