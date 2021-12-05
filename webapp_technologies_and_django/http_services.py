@@ -8,6 +8,11 @@ parms = {
 'name2' : 'value2'
 }
 
+headers = {
+'User-agent' : 'none/ofyourbusiness',
+'Spam' : 'Eggs'
+}
+
 def simple_get_request(parms,url):
     querystring = parse.urlencode(parms) #'name1=value1&name2=value2'
     u = request.urlopen(url+'?' + querystring)
@@ -17,5 +22,12 @@ def simple_get_request(parms,url):
 def simple_post_request(parms,url):
     querystring = parse.urlencode(parms) #'name1=value1&name2=value2'
     u = request.urlopen(url+'?' + querystring.encode('ascii'))
+    resp = u.read()
+    return resp
+
+def simple_request_with_headers(parms,headers,url):
+    querystring = parse.urlencode(parms)
+    req = request.Request(url, querystring.encode('ascii'), headers=headers)
+    u = request.urlopen(req)
     resp = u.read()
     return resp
