@@ -34,7 +34,7 @@ def simple_request_with_headers(parms,headers,url):
     return resp
 
 def get_header_content(header_url):
-    resp = requests.head('http://pypi.python.org/pypi?:action=login', auth=('user','password'))
+    resp = requests.head('http://www.python.org/index.html', auth=('user','password'))
     status = resp.status_code
     last_modified = resp.headers['last-modified']
     content_type = resp.headers['content-type']
